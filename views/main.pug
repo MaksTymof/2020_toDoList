@@ -1,0 +1,22 @@
+extends ./index.pug
+block content
+	link(rel="stylesheet" href="/styles.css")
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />	
+	h1 ToDo List
+	a(href="/new") +|<i class="fas fa-list"></i> 
+	a(href="tel:380951077047") 095-107-70-47
+		<i class="fas fa-phone-square-alt"></i>
+	ul
+		each item, index in list
+			.wrapper
+				li= item.done + ": " + item.time
+				- var action = [listname, index].join('/')
+				.item--actions
+					form(action="/remove/" + action  method="POST")
+						button
+							<i class="far fa-trash-alt"></i>
+					form(action="/edit/" + action method="GET")
+						button
+							<i class="fas fa-marker"></i>
+	a(href="/calendar") Calendar
+		<i class="far fa-calendar-alt"></i>

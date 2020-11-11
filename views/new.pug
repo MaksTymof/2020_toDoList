@@ -1,0 +1,7 @@
+extends ./index.pug
+block content
+	a(href="/main") Back
+	form.form--centered(action="/save" method="post")
+		input(placeholder="What done" name="done" value=done)
+		input(placeholder="Time" name="time" type="time" value=time)
+		button OK
